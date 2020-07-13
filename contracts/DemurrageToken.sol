@@ -1,7 +1,7 @@
 pragma solidity ^0.6.0;
 
 import "./ERC721.sol";
-// import "./IERC721.sol";
+import "./IERC721.sol";
 
 contract DemurrageToken is ERC721 {
     
@@ -27,16 +27,17 @@ contract DemurrageToken is ERC721 {
     function mint(uint256 _value, string memory asset) public {
         require(!_assetExists[asset]);
         assets.push(Asset(tokenId,_value,asset));
-        _mint(msg.sender, tokenId);
+        _mint(address(this), tokenId);
         _assetExists[asset] = true;
         tokenId++;
     }
     
-    function transfer(uint256 _tokenId) public {
+    function transfer(uint256 _tokenId, address _to) public {
         require(now<deadline);
         string memory assetFound = findTokenAsset(_tokenId);
         require(_assetExists[assetFound] == true);
-        transferFrom(msg.sender,address(this), _tokenId);
+        approve(msg.sender,_tokenId);
+        transferFrom(address(this),_to, _tokenId);
     }
     
     function findTokenAsset(uint256 _tokenId) public view returns(string memory) {
@@ -55,17 +56,11 @@ contract DemurrageToken is ERC721 {
         }
     }
     
-    // function ToUint(ufixed _timeperiod) public returns(uint256) {
-    //     ufixed decimal = 8;
-    //     return (_timeperiod * 10**(decimal));
-    // }
-    
     function TransferDai(address DaiInstance, uint256 _timeperiod, uint _tokenId) public returns(uint256) {
         uint256 _tokenValue = findTokenValue(_tokenId);
         uint256 _amount = _tokenValue * _timeperiod * 1/1000;
         daiToken = IERC721(DaiInstance);
-        // daiToken.approve(address(this), _amount);
-        daiToken.transferFrom(msg.sender,Demurrage_Collector, _amount);
+        daiToken.transferFrom(msg.sender, Demurrage_Collector, _amount);
         deadline = now + (_timeperiod * 1 days);
         return deadline;
     }
