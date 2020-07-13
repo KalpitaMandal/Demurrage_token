@@ -21,7 +21,7 @@ truffle migrate --reset
 Deploy the Deta token contract and the Dai token contract as follows:
 ```shell
 let Dai = await daiToken.deployed()
-let Deta = await DemmurageToken.deployed()
+let Deta = await DemurrageToken.deployed()
 ```
 Mint the Deta tokens and assign them with assets for rendering the dollar value with the digital asset:
 ```shell
@@ -40,5 +40,5 @@ Deta.TransferDai(Dai.address,3,1)
 ```
 Check the balance of the Demurrage collector for the fees payment
 ```shell
-await web3.eth.getBalance('0x583031D1113aD414F02576BD6afaBfb302140225')
+Dai.balanceOf('0x583031D1113aD414F02576BD6afaBfb302140225')
 ```
