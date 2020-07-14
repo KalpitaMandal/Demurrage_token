@@ -24,7 +24,7 @@ contract DemurrageToken is ERC721 {
     constructor() ERC721("Demurrage Token", "DETA") public {
     }
     
-    function mint(uint256 _value, string memory asset) public {
+    function AddAsset(uint256 _value, string memory asset) public {
         require(!_assetExists[asset]);
         assets.push(Asset(tokenId,_value,asset));
         _assetExists[asset] = true;
