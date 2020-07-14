@@ -22,7 +22,7 @@ Deploy the Deta token contract and the Dai token contract as follows:
 ```shell
 let Dai = await daiToken.deployed()
 let Deta = await DemurrageToken.deployed()
-let accounts = await web3.eth.getaccounts()
+let accounts = await web3.eth.getAccounts()
 ```
 Mint the Deta tokens and assign them with assets for rendering the dollar value with the digital asset:
 ```shell
@@ -37,7 +37,7 @@ Dai.approve(Deta.address, 100)
 This give the approval of 100 Dai token to the Deta contract.
 Transfer Dai tokens to the Deta contract for getting the initial payments for storing the Deta tokens:
 ```shell
-Deta.TransferDai(Dai.address,3,1)
+Deta.TransferDai(Dai.address,2,12,1)
 ```
 Check the balance of the Demurrage collector for the fees payment
 ```shell
