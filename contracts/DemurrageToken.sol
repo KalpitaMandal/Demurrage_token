@@ -54,13 +54,15 @@ contract DemurrageToken is ERC721 {
         }
     }
     
-    function TransferDai(address DaiInstance, uint256 _timeperiod, uint _tokenId) public returns(uint256) {
+    function TransferDai(address DaiInstance, uint256 _timeperiodDays, uint256 _timeperiodHours, uint _tokenId) public returns(uint256) {
         uint256 _tokenValue = findTokenValue(_tokenId);
-        uint256 _amount = _tokenValue * _timeperiod * 1/1000;
+        uint256 fraction = 24/_timeperiodHours;
+        uint256 newDays = (_timeperiodDays * fraction) + 1;
+        uint256 _amount = _tokenValue * newDays * 1/fraction * 1/1000;
         daiToken = IERC721(DaiInstance);
         daiToken.transferFrom(msg.sender, Demurrage_Collector, _amount);
         _mint(msg.sender,_tokenId);
-        deadline = now + (_timeperiod * 1 days);
+        deadline = now + ((_timeperiodDays * 1 days) + ((_timeperiodHours/24)* 1 days));
         return deadline;
     }
 }
