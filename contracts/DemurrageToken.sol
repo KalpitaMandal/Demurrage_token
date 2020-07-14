@@ -53,6 +53,10 @@ contract DemurrageToken is ERC721 {
             }
         }
     }
+    function getDays() public returns(uint256) {
+        uint256 DaysLeft = deadline - now;
+        return(DaysLeft * 1/1 days);
+    }
     
     function TransferDai(address DaiInstance, uint256 _timeperiodDays, uint256 _timeperiodHours, uint _tokenId) public returns(uint256) {
         uint256 _tokenValue = findTokenValue(_tokenId);
