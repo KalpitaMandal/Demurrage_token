@@ -22,6 +22,7 @@ Deploy the Deta token contract and the Dai token contract as follows:
 ```shell
 let Dai = await daiToken.deployed()
 let Deta = await DemurrageToken.deployed()
+let accounts = await web3.eth.getaccounts()
 ```
 Mint the Deta tokens and assign them with assets for rendering the dollar value with the digital asset:
 ```shell
@@ -45,4 +46,8 @@ Dai.balanceOf('0x583031D1113aD414F02576BD6afaBfb302140225')
 Transfer the Token to another address within the duration of the prepaid period
 ```shell
 Deta.transfer(1,accounts[9])
+```
+Check the balance of the receiver account
+```shell
+Deta.balanceOf(accounts[9])
 ```
