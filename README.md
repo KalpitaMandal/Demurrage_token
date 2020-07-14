@@ -42,3 +42,7 @@ Check the balance of the Demurrage collector for the fees payment
 ```shell
 Dai.balanceOf('0x583031D1113aD414F02576BD6afaBfb302140225')
 ```
+Transfer the Token to another address within the duration of the prepaid period
+```shell
+Deta.transfer(1,accounts[9])
+```
