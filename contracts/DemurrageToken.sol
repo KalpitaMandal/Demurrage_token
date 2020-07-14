@@ -1,7 +1,7 @@
 pragma solidity ^0.6.0;
 
 import "./ERC721.sol";
-import "./IERC721.sol";
+// import "./IERC721.sol";
 
 contract DemurrageToken is ERC721 {
     
@@ -27,7 +27,6 @@ contract DemurrageToken is ERC721 {
     function mint(uint256 _value, string memory asset) public {
         require(!_assetExists[asset]);
         assets.push(Asset(tokenId,_value,asset));
-        _mint(address(this), tokenId);
         _assetExists[asset] = true;
         tokenId++;
     }
@@ -36,8 +35,7 @@ contract DemurrageToken is ERC721 {
         require(now<deadline);
         string memory assetFound = findTokenAsset(_tokenId);
         require(_assetExists[assetFound] == true);
-        approve(msg.sender,_tokenId);
-        transferFrom(address(this),_to, _tokenId);
+        transferFrom(msg.sender,_to, _tokenId);
     }
     
     function findTokenAsset(uint256 _tokenId) public view returns(string memory) {
@@ -61,6 +59,7 @@ contract DemurrageToken is ERC721 {
         uint256 _amount = _tokenValue * _timeperiod * 1/1000;
         daiToken = IERC721(DaiInstance);
         daiToken.transferFrom(msg.sender, Demurrage_Collector, _amount);
+        _mint(msg.sender,_tokenId);
         deadline = now + (_timeperiod * 1 days);
         return deadline;
     }
