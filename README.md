@@ -3,7 +3,9 @@ A token to handle demurrage fees payment and maintain regualtions regarding tran
 ```shell
 npm install @openzeppelin/contracts --save
 ```
-For deploying the smart contracts, trufllw suite was used. We begin with:
+Since running the setup on private blockchain, we assume the erc20 tokens are dai tokens and proceed with the below process.
+
+For deploying the smart contracts, truflle suite was used. We begin with:
 ```shell
 truffle init
 ```
