@@ -51,3 +51,7 @@ Check the balance of the receiver account
 ```shell
 Deta.balanceOf(accounts[9])
 ```
+Check the Number of days left for the paid period
+```
+Deta.getDays()
+```
