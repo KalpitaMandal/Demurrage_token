@@ -7,6 +7,10 @@ For deploying the smart contracts, trufllw suite was used. We begin with:
 ```shell
 truffle init
 ```
+Test the contract before deploying it on the private blockchain
+```
+truffle test
+```
 Set up the ganache private blockchain environment for testing
 ```shell
 truffle develop
@@ -14,8 +18,6 @@ truffle develop
 Compile and migrate the contracts for testing:
 ```shell
 truffle compile
-```
-```shell
 truffle migrate --reset
 ```
 Deploy the Deta token contract and the Dai token contract as follows:
