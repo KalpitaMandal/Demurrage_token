@@ -28,9 +28,9 @@ let accounts = await web3.eth.getAccounts()
 ```
 Mint the Deta tokens and assign them with assets for rendering the dollar value with the digital asset:
 ```shell
-Deta.AddAsset(1200,"Bicycle")
-Deta.AddAsset(1000,"Pool")
-Deta.AddAsset(1400,"Casino")
+Deta.AddAsset(1200,"Car")
+Deta.AddAsset(1000,"IphoneX")
+Deta.AddAsset(1400,"Villa")
 ```
 Approve the Deta token contract to receive and transfer payments from the Dai token contract:
 ```shell
