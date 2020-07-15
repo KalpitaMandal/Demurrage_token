@@ -37,7 +37,8 @@ Approve the Deta token contract to receive and transfer payments from the Dai to
 Dai.approve(Deta.address, 100)
 ```
 This give the approval of 100 Dai token to the Deta contract.
-Transfer Dai tokens to the Deta contract for getting the initial payments for storing the Deta tokens:
+
+Transfer Dai tokens to the Deta contract for getting the initial payments for storing the Deta tokens.
 ```shell
 Deta.TransferDai(Dai.address,2,12,1)
 ```
